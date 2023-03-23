@@ -1,6 +1,3 @@
-/* BU DERSDEKİ TÜM DEĞERLERİN DÖNMESİNİ (RETURN) UNUTMAYIN, AKSİ TAKDİRDE TEST KONTROLÜ ÇALIŞMAZ */
-
-/* İşte veriniz bu */
 const orijinalTatlar = [
   "Muz",
   "Vişne",
@@ -29,135 +26,59 @@ const orijinalTatlar = [
   "Vanilya",
 ];
 
-/* Görev 1: Diziyi kopyalama!
-Orijinal tatların bulunduğu toplam 25 aromanın olduğu bir dizimiz var (yukarıya bakın). Bu görevde, bu dizi'ye veri yazma ve bu diziden veri okuma işlemleri yapacağız.
-Tüm bu değişiklikleri yaparken, gerçek, orijinal 25 lezzetin listesini kaybetmek istemiyoruz. Bu yüzden orijinal diziyi kopyalamamız gerekmektedir!
-
-/*
-Aşağıdakileri yapmak için aşağıdaki kopyalama işlevini kullanın:
-   1. parametre olarak bir dizi alın - işlev çağrıldığında orijinalTatlar'i argüman olarak ileteceksiniz.
-   2. Alınan dizinin bir kopyasını döndür
-*/
-
-
-function kopyala(/*kod buraya*/){
-  /*kod buraya*/
+function kopyala(dizi){
+  return dizi.slice()
 }
+const allTastes = kopyala(orijinalTatlar);
 
 
-/* Görev 2:
-Bir dizinin tam olarak 25 çeşit olduğunu onaylayın. İşleviniz şunları kabul etmelidir:
-   1. parametre olarak bir dizi
-   2. Verilen dizinin 25 çeşit olup olmadığını kontrol edin
-   3. İşleviniz, dizinin uzunluğu 25 ise DOĞRU(true) ve dizinin uzunluğu 25 DEĞİLSE YANLIŞ(false) bir boolean döndürmelidir.
+function dizi25Cesitmi(dizi){
+    console.log(dizi.length);
+    if(dizi.length == 25){
+      return true;
+    }
+  }
+dizi25Cesitmi(allTastes);
 
 
-Örneğin: dizi25Cesit(orijinalTatlar) kodunuz düzgün çalışıyorsa true değerini döndürür.
-*/
-
-
-function dizi25Cesitmi(/*kod buraya*/){
-  /*kod buraya*/
+function cesitEkle(dizi,malzeme){
+  dizi.unshift(malzeme);
+  return dizi;
 }
+cesitEkle(allTastes,"Kakule");
+console.log(cesitEkle(allTastes,"Kakule"));
 
-
-/* Görev 3:
-Pastane sahibi size yeni bir lezzet fikriyle geldi: Kakule! Bunun da çok tutacağından çok emin. Bu lezzeti eklemek için diziyi değiştirmeniz gerekir.
-
-Aşağıdakileri yapmak için cesitEkle işlevini kullanın:
-   1. İlk parametrede tatlar dizisini argüman olarak alan bir dizi alın
-   2. İkinci parametrede yeni tadı 'string' argümanı olarak alın
-   3. İşlev, argüman olarak verilen yeni tadı, verilen dizinin başına ekler.
-   4. İşlev, yeni oluşan diziyi döndürmelidir
-
-  Örneğin: cesitEkle(orijinalTatlar, "Kakule") işlevi doğru çalıştığında ["Kakule", "Muz",..."Vanilya"] şeklinde dönmelidir
-*/
-
-
-function cesitEkle(/*kod buraya*/){
-  /*kod buraya*/
+function sonCesitiKaldir(dizi){
+  dizi.pop();
+  return dizi;
 }
+sonCesitiKaldir(allTastes);
+console.log(sonCesitiKaldir(allTastes));
 
 
-/* Cörev 4:
-
-Hoooppppalaa! orijinalTatlar dizisinde artık 26 aroma var! Göreviniz, dizinin sonundan bir öğeyi kaldırmaktır.
-
-Aşağıdakileri yapmak için sonCesitiKaldir işlevini kullanın:
-   1. Bir dizi alın
-   2. Alınan diziden son öğeyi kaldırın
-   3. Ortaya çıkan diziyi döndürün
-
-   Örneğin: sonCesitiKaldir(orijinalTatlar) çalıştırıldığında ["Kakule", "Muz",..."Çilek"] döndürülür.
-*/
-
-
-function sonCesitiKaldir(/*kod buraya*/){
-  /*kod buraya*/
+function indekstekiCesitiGetir(dizi,i){
+  return dizi[i]
 }
+console.log(indekstekiCesitiGetir(allTastes,2));
 
 
-/* Görev 5:
-Dizideki belirli bir indeksteki çeşniyi döndüren bir işlev yazın.
-
-Aşağıdakileri yapmak için aşağıdaki indekstekiCesitiGetir işlevini kullanın:
-   1. İlk parametrede tatlar dizisini argüman olarak alacak bir dizi alın
-   2. İkinci parametrede argüman olarak istenen dizini alacak bir sayı alın
-   3. Verilen indekste bulunan çeşiti döndürün
-
-   Örneğin: indekstekiCesitiGetir(orijinalTatlar, 2) çalıştırılmasıyla, Kakule'in başarıyla eklendiği varsayarsak sonuç "Ceviz" olucaktır.
-*/
-
-function indekstekiCesitiGetir(/*kod buraya*/){
-  /*kod buraya*/
+function ismeGoreCesitCikar(dizi,malzeme){
+  dizi.splice(dizi.indexOf(malzeme),1);
+  return dizi;
 }
+ismeGoreCesitCikar(allTastes,"Tarçın");
 
 
-/* Görev 6:
-
-Firma, ürün yelpazesine daha fazla lezzet eklemek istediğinden, sadece ilk veya son aromayı keyfi olarak çıkarmak yerine, aroma adına göre aromaları kaldırmaları gerektiğini fark ederler. Göreviniz, verilen bir dizinde, ada göre bu tadı diziden çıkarmak.
-
-Aşağıdakileri yapmak için ismeGoreCesitCikar işlevini kullanın:
-   1. İlk parametrede tatlar dizisini argüman olarak alın
-   2. İkinci parametrede, lezzet adını argüman olarak alın
-   3. Alınan diziden alınan aromayı kaldırın
-   4. Artık bir tane daha az lezzet içeren sonuçtaki diziyi döndürün
-
-  Örneğin:  ismeGoreCesitCikar(orijinalTatlar, "Tarçın") çalıştırılmasıyla,  "Tarçın" aroması kaldırılacağından uzunluğu 24 olan bir dizi döndürülür.
-
-  İPUCU: Bunun için .splice() kullanabilirsiniz.
-*/
-
-function ismeGoreCesitCikar(/*kod buraya*/){
-  /*kod buraya*/
+function ismeGoreFiltrele(dizi,malzeme){
+  const cikti = []
+  for ( let i = dizi.length - 1 ; i >= 0 ; i-- ){
+    if(dizi[i].includes(malzeme))
+    cikti.unshift(dizi[i]);
+  }
+  return cikti
 }
-
-
-/* Görev 7:
-
-14 Şubat Sevgililer Günü'nde Firma, tüm çikolata lezzetlerini öne çıkaran bir promosyon malzemeleri oluşturmak istiyor.
-Göreviniz, dizideki her bir öğeyi kontrol eden ve yalnızca verilen isimin geçtiği lezzetleri bulup orataya çıkan yeni diziyi döndüren, ismeGoreFiltrele adlı bir işlev yazmaktır.
-Bu, farklı tatil ve kutlamalarda "Fındık", "Fıstık", "Çikolata" vb. lezzetler için filtreleme yapabilmenizi sağlar.
-
-Aşağıdakileri yapmak için ismeGoreFiltrele işlevini kullanın:
-   1. İlk parametrede tatlar dizisini argüman olarak alacak bir dizi alın
-   2. İkinci parametrede filtre değerini argüman olarak alın (örnek: "Çikolata")
-   3. Dizideki tatlardan herhangi birinin filtre değerini içerip içermediğini kontrol edin.
-   4. Varsa, onları yeni bir diziye ekleyin
-   5. Filtrelenmiş tatları içeren yeni diziyi döndürün
-
-  Örneğin: ismeGoreFiltrele(orijinalTatlar, "Çikolata") çalıştırıldığında ["Çikolata", "Fındık Çikolata", "Fıstık Çikolata", "Badem Çikolata"]
-
-  İPUCU - bunu çözmenize yardımcı olması için .includes yöntemini kullanabilirsiniz.
-
-  Bu sorunu çözmek için GELİŞMİŞ DİZİ YÖNTEMLERİNİ (yani .filter) KULLANMAYIN.
-*/
-
-
-function ismeGoreFiltrele(/*kod buraya*/){
-  /*kod buraya*/
-}
-
+ismeGoreFiltrele(allTastes,"Çikolata")
+console.log(ismeGoreFiltrele(allTastes,"Çikolata"));
 
 
 /* ALIŞTIRMA */
